@@ -36,9 +36,21 @@ export const TOKEN_BY_ADDRESS = gql`
 export const TOP_PAIRS = gql`
   fragment TokenInfo on Token {
     id
-    name
     symbol
+    name
+    decimals
+    totalSupply
+    tradeVolume
+    tradeVolumeUSD
+    untrackedVolumeUSD
+    txCount
+    totalLiquidity
     derivedBNB
+    tokenDayData
+    pairDayDataBase
+    pairDayDataQuote
+    pairBase
+    pairQuote
   }
 
   query TopPairs($limit: Int!, $excludeTokenIds: [String!]!) {

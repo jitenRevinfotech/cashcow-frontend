@@ -16,22 +16,22 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
   try {
     const topPairs = await getTopPairs();
 
-    // const tokens = topPairs.reduce<ReturnShape>((accumulator, pair): ReturnShape => {
-    //   for (const token of [pair.token0, pair.token1]) {
-    //     const tId = getAddress(token.id);
+    const tokens = topPairs.reduce<ReturnShape>((accumulator, pair): ReturnShape => {
+      for (const token of [pair.token0, pair.token1]) {
+        const tId = getAddress(token.id);
 
-    //     accumulator[tId] = {
-    //       name: token.name,
-    //       symbol: token.symbol,
-    //       price: token.derivedUSD,
-    //       price_BNB: token.derivedBNB,
-    //     };
-    //   }
+        accumulator[tId] = {
+          name: token.name,
+          symbol: token.symbol,
+          price: token.derivedUSD,
+          price_BNB: token.derivedBNB,
+        };
+      }
 
-    //   return accumulator;
-    // }, {});
+      return accumulator;
+    }, {});
 
-    return200(res, { updated_at: new Date().getTime(), data: topPairs });
+    return200(res, { updated_at: new Date().getTime(), data: tokens });
   } catch (error) {
     return500(res, error);
   }

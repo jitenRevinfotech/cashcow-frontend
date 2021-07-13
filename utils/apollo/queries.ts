@@ -24,6 +24,7 @@ export const TOKEN_BY_ADDRESS = gql`
     txCount
     totalLiquidity
     derivedBNB
+    derivedUSD
     tokenDayData
     pairDayDataBase
     pairDayDataQuote
@@ -51,6 +52,7 @@ export const TOP_PAIRS = gql`
     pairDayDataQuote
     pairBase
     pairQuote
+    derivedUSD
   }
 
   query TopPairs($limit: Int!, $excludeTokenIds: [String!]!) {

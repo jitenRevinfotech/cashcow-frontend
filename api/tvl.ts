@@ -38,7 +38,6 @@ export default async function (req: VercelRequest, res: VercelResponse): Promise
           "total_liquidity_BNB" : total_liq_bnb ,  
           "bnd_price"           : "304.46",
           "tvl"                 : total_value_locked,
-          "allData"             :allPairsData,
         });
   })
   } catch (error) {
